@@ -386,6 +386,33 @@ export default function Popup() {
       {tab === 'settings' && (
         <div className="flex flex-col flex-1">
 
+          {/* API Key */}
+          <div className="px-4 py-3.5" style={{ borderBottom: '1px solid #edf2f7' }}>
+            <p className="mb-1.5 font-semibold text-slate-500 uppercase tracking-widest" style={{ fontSize: 11 }}>
+              API Key
+            </p>
+            <div className="flex gap-1.5">
+              <input
+                type={showKey ? 'text' : 'password'}
+                placeholder="team_xxxxxxxxxxxxxxxx"
+                value={s.apiKey}
+                onChange={(e) => update({ apiKey: e.target.value })}
+                className="flex-1 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 outline-none focus:border-slate-600"
+                style={{ padding: '7px 10px', fontSize: 11, fontFamily: 'monospace' }}
+              />
+              <button
+                onClick={() => setShowKey(!showKey)}
+                className="rounded-lg border border-slate-200 bg-slate-50 text-slate-600 cursor-pointer font-medium"
+                style={{ padding: '6px 10px', fontSize: 11 }}
+              >
+                {showKey ? 'Hide' : 'Show'}
+              </button>
+            </div>
+            <p className="mt-1 text-slate-400" style={{ fontSize: 10 }}>
+              Stored locally. Never sent anywhere except the TMT API.
+            </p>
+          </div>
+
           {/* Default Languages */}
           <div className="px-4 py-3.5" style={{ borderBottom: '1px solid #edf2f7' }}>
             <p className="mb-2 font-semibold text-slate-500 uppercase tracking-widest" style={{ fontSize: 11 }}>
