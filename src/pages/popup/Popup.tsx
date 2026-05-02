@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import logo from "../../assets/img/logo.png";
 
 type Tab = "translate" | "settings";
 type TranslationMode = "tooltip" | "page";
@@ -104,21 +105,12 @@ const sendRuntimeMessage = async (message: unknown) => {
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
 
-const GlobeIcon = () => (
-  <svg
-    width="13"
-    height="13"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="2" y1="12" x2="22" y2="12" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-  </svg>
+const LogoIcon = ({ size = 13 }: { size?: number }) => (
+  <img
+    src={logo}
+    alt="TMT Translate"
+    style={{ width: size, height: size, objectFit: "contain" }}
+  />
 );
 
 const TranslateIcon = () => (
@@ -375,7 +367,7 @@ export default function Popup() {
               color: "#fff",
             }}
           >
-            <GlobeIcon />
+            <LogoIcon size={18} />
           </div>
           <span
             className="font-semibold text-white"
@@ -478,7 +470,7 @@ export default function Popup() {
                 {
                   id: "page" as TranslationMode,
                   label: "Full Page",
-                  icon: <GlobeIcon />,
+                  icon: <LogoIcon size={12} />,
                 },
               ].map(({ id, label, icon }) => (
                 <button

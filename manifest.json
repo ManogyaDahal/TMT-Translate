@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "TMT Hackathon",
+  "name": "TMT Translate",
   "description": "Converts Tamang <-> English <-> Nepali",
 
   "action": {
