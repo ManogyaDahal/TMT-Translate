@@ -1,7 +1,10 @@
-name: Build and Zip Chrome Extension
+name: Build Extensions
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+  pull_request:
 
 jobs:
   build:
@@ -13,21 +16,30 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
- 
+
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'yarn'
- 
+          node-version-file: ".nvmrc"
+          cache: "yarn"
+
       - name: Install dependencies
         run: yarn
- 
+
       - name: Build Chrome
         run: yarn build:chrome
 
+      - name: Build Firefox
+        run: yarn build:firefox
+
       - name: Upload Chrome extension artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: vite-web-extension-chrome
           path: dist_chrome
+
+      - name: Upload Firefox extension artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: vite-web-extension-firefox
+          path: dist_firefox
