@@ -33,13 +33,13 @@ jobs:
         run: yarn build:firefox
 
       - name: Upload Chrome extension artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vite-web-extension-chrome
           path: dist_chrome
 
       - name: Upload Firefox extension artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vite-web-extension-firefox
           path: dist_firefox
